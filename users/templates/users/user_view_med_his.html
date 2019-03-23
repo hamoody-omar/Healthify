@@ -1,0 +1,25 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="content-section">
+      <form method="POST"  href="{% url 'user_make_appointment' %}">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Medical History and Treatments</legend>
+              
+           
+                <div>
+                    <P> <b>Novant Health</b>: seen on october 16/10/2018 </p>
+                </div>
+
+                <div>
+                    <P> <b>Med Assist</b>: treated on october 04/07/2018 </p>
+                </div>
+            
+            <div class="form-group">
+              <button class="btn btn-outline-info" > <a   href="{% url 'user_profile' %}" >Back</button>
+          </div>
+      </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="content-section">
+      <form method="POST"  href="{% url 'user_make_appointment' %}">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Make an Appointment</legend>
+              <div>
+                <div>
+                    <label  style="text-align: right;"><span class= "red-text">*</span> Select Medical Provider</label>
+                </div>
+                <div>
+                    <select>
+                    {% for p, a in appointment%}
+                        <option value="{{p}}" >{{p}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+              </div>
+              <div>
+              <label  style="text-align: right;"><span class= "red-text">*</span> Select Date and Time</label>
+                <div id="datetimepicker" class="input-append date">
+            <input type="text"></input>
+            <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+            </span>
+            </div>
+            </div>
+            <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+            </script> 
+            <script type="text/javascript"
+            src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+            </script>
+            <script type="text/javascript"
+            src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+            </script>
+            <script type="text/javascript"
+            src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+            </script>
+            <script type="text/javascript">
+            $('#datetimepicker').datetimepicker({
+                format: 'dd/MM/yyyy hh:mm:ss',
+                language: 'pt-BR'
+            });
+            </script>
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Submit</button>
+          </div>
+      </form>
+    </div>
+{% endblock content %}
